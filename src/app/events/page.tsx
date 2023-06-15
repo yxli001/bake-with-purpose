@@ -1,20 +1,22 @@
 import TitleBanner from "@/components/TitleBanner/TitleBanner";
 
 import styles from "./page.module.css";
-import { Event } from "@/data/types";
-import data from "@/data/events";
+import { Event } from "@/types/types";
 import Image from "next/image";
 import Padding from "@/components/Padding/Padding";
 
 export default async function Events() {
     const fetchEvents = async () => {
-        const wait = new Promise<Event[]>((resolve, reject) => {
-            setTimeout(() => {
-                resolve(data);
-            }, 200);
+        const res = await fetch("http://localhost:3000/api/events", {
+            next: { revalidate: 10 },
         });
 
-        return await wait;
+        if (!res.ok) {
+            // This will activate the closest `error.js` Error Boundary
+            throw new Error("Failed to fetch data");
+        }
+
+        return res.json();
     };
 
     const events: Event[] = await fetchEvents();
