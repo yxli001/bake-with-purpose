@@ -38,9 +38,9 @@ export default function RootLayout({
         <html lang="en">
             <body className={times.className} suppressHydrationWarning={true}>
                 <div className="container">
-                    <StatsBanner
+                    {/* <StatsBanner
                         stats={{ cakes: 15, cookies: 80, cupcakes: 90 }}
-                    />
+                    /> */}
                     <Navbar
                         logo={{
                             imgSrc: "/logo_v2.jpeg",
