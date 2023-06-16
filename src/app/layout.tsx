@@ -1,6 +1,5 @@
 import "./globals.css";
 import Navbar from "@/components/Navbar/Navbar";
-import StatsBanner from "@/components/StatsBanner/StatsBanner";
 import { Tinos } from "next/font/google";
 
 const times = Tinos({ subsets: ["latin"], weight: ["400", "700"] });
@@ -38,9 +37,6 @@ export default function RootLayout({
         <html lang="en">
             <body className={times.className} suppressHydrationWarning={true}>
                 <div className="container">
-                    {/* <StatsBanner
-                        stats={{ cakes: 15, cookies: 80, cupcakes: 90 }}
-                    /> */}
                     <Navbar
                         logo={{
                             imgSrc: "/logo_v2.jpeg",
