@@ -1,53 +1,48 @@
 import "./globals.css";
 import Navbar from "@/components/Navbar/Navbar";
-import { Tinos } from "next/font/google";
+import { Cormorant_Garamond } from "next/font/google";
 
-const times = Tinos({ subsets: ["latin"], weight: ["400", "700"] });
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: ["700"],
+});
 
 export const metadata = {
-    title: "Bake with Purpose",
-    description: "",
+  title: "Bake with Purpose",
+  description: "",
 };
 
 export default function RootLayout({
-    children,
+  children,
 }: {
-    children: React.ReactNode;
+  children: React.ReactNode;
 }) {
-    const links = [
-        {
-            name: "Events",
-            url: "/events",
-        },
-        {
-            name: "Team",
-            url: "/team",
-        },
-    ];
+  const links = [
+    {
+      name: "Events",
+      url: "/events",
+    },
+    {
+      name: "Team",
+      url: "/team",
+    },
+  ];
 
-    const buttons = [
-        {
-            text: "Sign Up",
-            backgroundColor: "#d88eb4",
-            color: "#f6e3f2",
-        },
-    ];
-
-    return (
-        <html lang="en">
-            <body className={times.className} suppressHydrationWarning={true}>
-                <div className="container">
-                    <Navbar
-                        logo={{
-                            imgSrc: "/logo_v2.jpeg",
-                            title: "Bake With Purpose",
-                        }}
-                        links={links}
-                        buttons={buttons}
-                    />
-                    <div className="children">{children}</div>
-                </div>
-            </body>
-        </html>
-    );
+  return (
+    <html lang="en">
+      <body className={cormorant.className} suppressHydrationWarning={true}>
+        <div className="container">
+          <Navbar
+            logo={{
+              imgSrc: "/logo_v2.png",
+              title: "Bake With Purpose",
+              textSrc: "/logo-text.jpeg",
+            }}
+            links={links}
+          />
+          <div className="children">{children}</div>
+        </div>
+      </body>
+    </html>
+  );
 }

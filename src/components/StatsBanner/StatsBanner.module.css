@@ -1,39 +1,67 @@
 .banner {
-    width: 100%;
-    background-color: #d88eb4;
-    font-weight: 100;
-    color: #f6e3f2;
-    display: flex;
-    flex-direction: column;
-    padding: 1rem 0;
+  width: 100%;
+  background-color: #ff96d6;
+  font-weight: 100;
+  color: #f6e3f2;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 0;
 }
 
 .title {
-    text-align: center;
-    font-size: 1.2rem;
+  text-align: center;
+  font-size: 1.2rem;
 }
 
 .stats {
-    font-size: 2.5rem;
-    margin-top: 1rem;
-    font-weight: bold;
-    display: flex;
-    justify-content: space-between;
+  font-size: 5rem;
+  margin-top: 1rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
 }
 
 .stat {
-    flex: 1 1 0px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.5rem;
+  flex: 1 1 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .statWord {
-    font-size: 1rem;
-    font-weight: 300;
+  font-size: 1.2rem;
+  font-weight: 300;
 }
 
 .stat:not(:last-of-type) {
-    border-right: 1px solid #f6e3f2;
+  border-right: 1px solid #f6e3f2;
+}
+
+@media screen and (max-width: 700px) {
+  .stats {
+    font-size: 3.8rem;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .stats {
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+  }
+
+  .stat {
+    width: 60%;
+  }
+
+  .stat:not(:last-of-type) {
+    border-right: none;
+    border-bottom: 2px solid #f6e3f2;
+    padding-bottom: 1rem;
+  }
+
+  .stat:not(:first-of-type) {
+    padding-top: 1rem;
+  }
 }

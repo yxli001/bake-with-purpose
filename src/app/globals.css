@@ -1,59 +1,60 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .container {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 body {
-    width: 100vw;
-    height: 100vh;
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
 }
 
 .children {
-    flex: 1;
+  flex: 1;
 }
 
 .not-found {
-    width: 100%;
-    height: 100%;
-    background-color: #d88eb4;
-    color: white;
-    font-size: 5rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 8%;
+  width: 100%;
+  height: 100%;
+  background-color: #ff96d6;
+  color: white;
+  font-size: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 8%;
 }
 
 .big {
-    font-size: 18rem;
-    font-weight: 100;
-    letter-spacing: 2rem;
+  font-size: 18rem;
+  font-weight: 100;
+  letter-spacing: 2rem;
 }
 
 .small {
-    font-size: 1.1rem;
-    color: #f6e3f2;
+  font-size: 1.1rem;
+  color: #f6e3f2;
 }
 
 .buttons {
-    margin-top: 2rem;
-    display: flex;
-    gap: 1rem;
+  margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
 }
 
 .link-button {
-    background-color: #d88eb4;
-    color: white;
+  background-color: transparent;
+  color: white;
 }
 
 .link-button:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }

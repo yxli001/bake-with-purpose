@@ -1,0 +1,35 @@
+.container {
+  background-color: #ff96d6;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 0;
+  gap: 3rem;
+}
+
+.title {
+  font-size: 2rem;
+}
+
+.qualifications {
+  font-size: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.signUp {
+  color: #ff96d6;
+  background-color: white;
+}
+
+@media screen and (max-width: 550px) {
+  .title {
+    font-size: 1.8rem;
+  }
+  .qualifications {
+    font-size: 1.2rem;
+  }
+}
