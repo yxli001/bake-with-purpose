@@ -7,10 +7,6 @@ import { Event } from "@/types/types";
 import Image from "next/image";
 import Padding from "@/components/Padding/Padding";
 
-export const metadata = {
-  title: "Events - Bake With Purpose",
-};
-
 const fetchEvents = async () => {
   const res = await fetch(`/api/events`);
 
