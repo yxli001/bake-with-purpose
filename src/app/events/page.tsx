@@ -12,7 +12,7 @@ export const metadata = {
 export default async function Events() {
   const fetchEvents = async () => {
     const res = await fetch(`${process.env.BASE_URL}/api/events`, {
-      cache: "no-cache",
+      cache: "no-store",
     });
 
     if (!res.ok) {
