@@ -9,20 +9,20 @@ export const metadata = {
   title: "Events - Bake With Purpose",
 };
 
+const fetchEvents = async () => {
+  const res = await fetch(`${process.env.BASE_URL}/api/events`, {
+    cache: "no-store",
+  });
+
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error("Failed to fetch data");
+  }
+
+  return res.json();
+};
+
 export default async function Events() {
-  const fetchEvents = async () => {
-    const res = await fetch(`${process.env.BASE_URL}/api/events`, {
-      cache: "no-store",
-    });
-
-    if (!res.ok) {
-      // This will activate the closest `error.js` Error Boundary
-      throw new Error("Failed to fetch data");
-    }
-
-    return res.json();
-  };
-
   const events: Event[] = await fetchEvents();
 
   return (
