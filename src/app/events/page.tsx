@@ -1,3 +1,5 @@
+"use client";
+import { useEffect, useState } from "react";
 import TitleBanner from "@/components/TitleBanner/TitleBanner";
 
 import styles from "./page.module.css";
@@ -10,9 +12,7 @@ export const metadata = {
 };
 
 const fetchEvents = async () => {
-  const res = await fetch(`${process.env.BASE_URL}/api/events`, {
-    cache: "no-store",
-  });
+  const res = await fetch(`/api/events`);
 
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary
@@ -22,8 +22,15 @@ const fetchEvents = async () => {
   return res.json();
 };
 
-export default async function Events() {
-  const events: Event[] = await fetchEvents();
+export default function Events() {
+  const [events, setEvents] = useState<Event[]>([]);
+
+  useEffect(() => {
+    fetchEvents().then((data) => {
+      console.log(data);
+      setEvents(data);
+    });
+  }, []);
 
   return (
     <div className={styles.eventsPage}>
