@@ -11,12 +11,9 @@ export const metadata = {
 
 export default async function Events() {
   const fetchEvents = async () => {
-    const res = await fetch(
-      `${process.env.VERCEL_URL || process.env.BASE_URL}/api/events`,
-      {
-        next: { revalidate: 10 },
-      }
-    );
+    const res = await fetch(`${process.env.BASE_URL}/api/events`, {
+      next: { revalidate: 10 },
+    });
 
     if (!res.ok) {
       // This will activate the closest `error.js` Error Boundary
