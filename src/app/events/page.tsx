@@ -23,7 +23,6 @@ export default function Events() {
 
   useEffect(() => {
     fetchEvents().then((data) => {
-      console.log(data);
       setEvents(data);
     });
   }, []);
