@@ -1,12 +1,15 @@
 "use client";
+import React, { HTMLAttributes } from "react";
 
 import styles from "./Qualifications.module.css";
 import Button from "../Button/Button";
 import Padding from "../Padding/Padding";
 
-const Qualifications = () => {
+interface Props extends HTMLAttributes<HTMLDivElement> {}
+
+const Qualifications = ({ ...props }: Props) => {
     return (
-        <Padding style={{ backgroundColor: "#ff96d6" }}>
+        <Padding style={{ backgroundColor: "#ff96d6" }} {...props}>
             <div className={styles.container}>
                 <h2 className={styles.title}>Qualifications of Applicants</h2>
                 <ul className={styles.qualifications}>

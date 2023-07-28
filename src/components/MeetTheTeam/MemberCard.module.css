@@ -1,0 +1,35 @@
+.card {
+    border: 1px solid rgb(207, 207, 207);
+    border-radius: 8px;
+    padding: 3rem 0rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+
+    box-shadow: 2px 5px 10px 0px rgba(186, 186, 186, 0.3);
+}
+
+.pfp {
+    object-fit: cover;
+    border-radius: 100%;
+}
+
+.name {
+    font-size: 2rem;
+}
+
+.roles {
+    display: flex;
+    font-size: 1rem;
+}
+
+.role:not(:last-of-type) {
+    padding-right: 0.3rem;
+    border-right: 1px solid rgb(132, 132, 132);
+}
+
+.role:last-of-type {
+    padding-left: 0.3rem;
+}

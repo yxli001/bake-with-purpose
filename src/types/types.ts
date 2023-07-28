@@ -6,6 +6,13 @@ export interface Event {
     images: Image[];
 }
 
+export interface Member {
+    id: number;
+    name: string;
+    roles: string[];
+    pfp: Image;
+}
+
 export interface Image {
     src: string;
     description: string;

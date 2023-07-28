@@ -20,11 +20,11 @@ export default function RootLayout({
     const links = [
         {
             name: "Events",
-            url: "/events",
+            url: "/#events",
         },
         {
             name: "Team",
-            url: "/team",
+            url: "/#team",
         },
     ];
 

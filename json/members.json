@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "name": "Olivia Xiao",
+        "roles": ["President", "Co-Founder"],
+        "pfp": {
+            "src": "",
+            "description": "Olivia Xiao"
+        }
+    }, 
+    {
+        "id": 2,
+        "name": "Sally Wang",
+        "roles": ["Vice President", "Co-Founder"],
+        "pfp": {
+            "src": "",
+            "description": "Sally Wang"
+        }
+    }
+]

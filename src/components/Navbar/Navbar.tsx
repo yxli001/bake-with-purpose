@@ -72,11 +72,12 @@ const Navbar: FC<NavbarProps> = ({ logo, links }) => {
                                 fontSize: "1rem",
                             }}
                             onClick={() => {
-                                window.open(
-                                    "https://docs.google.com/forms/d/e/1FAIpQLScHtUpyyQpJxrCg0eRrCcuMSgq_qED6O-QlJFGrBCJH8FUCfg/viewform",
-                                    "_blank",
-                                    "noreferrer"
-                                );
+                                const section =
+                                    document.querySelector("#apply");
+                                section!.scrollIntoView({
+                                    behavior: "smooth",
+                                    block: "start",
+                                });
                             }}
                         >
                             Sign Up
@@ -102,6 +103,7 @@ const Navbar: FC<NavbarProps> = ({ logo, links }) => {
                                         <Link
                                             href={link.url}
                                             className={styles.link}
+                                            scroll={false}
                                         >
                                             {link.name}
                                         </Link>

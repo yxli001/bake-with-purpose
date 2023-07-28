@@ -6,9 +6,9 @@ interface PaddingProps extends React.HTMLAttributes<HTMLDivElement> {
     children?: React.ReactNode;
 }
 
-const Padding: FC<PaddingProps> = ({ children, ...attributes }) => {
+const Padding: FC<PaddingProps> = ({ children, className, ...attributes }) => {
     return (
-        <div className={styles.padding} {...attributes}>
+        <div className={`${className} ${styles.padding}`} {...attributes}>
             {children}
         </div>
     );

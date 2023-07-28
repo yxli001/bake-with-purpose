@@ -1,5 +1,14 @@
-.container {
-  text-align: center;
-  font-size: 3rem;
-  padding: 15rem 0;
+.meetTheTeam {
+    padding-top: 1rem;
+    padding-bottom: 3rem;
+}
+
+.cards {
+    width: 80%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    align-content: center;
+    gap: 3rem;
 }
