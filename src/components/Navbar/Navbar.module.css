@@ -20,11 +20,6 @@
 
 .logoTitle {
   object-fit: cover;
-  opacity: 0.7;
-}
-
-.logo:hover .logoTitle {
-  opacity: 1;
 }
 
 .logoTitle {
