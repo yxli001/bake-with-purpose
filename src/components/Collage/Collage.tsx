@@ -1,6 +1,30 @@
+"use client";
+
+import useWindowDimensions from "@/utils/dimensions";
 import styles from "./Collage.module.css";
 
 const Collage = () => {
+    const { width, height } = useWindowDimensions();
+
+    let images = [1, 2, 3, 4, 5, 6, 7, 8, 9].map((i) => {
+        return (
+            <div
+                key={`Image ${i}`}
+                style={{
+                    backgroundImage: `url(/collage/${i}.jpeg)`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    backgroundRepeat: "no-repeat",
+                }}
+                className={`${styles[`img${i}`]} ${styles.img}`}
+            ></div>
+        );
+    });
+
+    if (width < 850) {
+        images = images.slice(0, 1);
+    }
+
     return (
         <div className={styles.collage}>
             <div className={styles.center}>
@@ -20,20 +44,7 @@ const Collage = () => {
                     having fun and learning more about themselves and others.
                 </p>
             </div>
-            {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((i) => {
-                return (
-                    <div
-                        key={`Image ${i}`}
-                        style={{
-                            backgroundImage: `url(/collage/${i}.jpeg)`,
-                            backgroundSize: "cover",
-                            backgroundPosition: "center",
-                            backgroundRepeat: "no-repeat",
-                        }}
-                        className={`${styles[`img${i}`]} ${styles.img}`}
-                    ></div>
-                );
-            })}
+            {images}
         </div>
     );
 };

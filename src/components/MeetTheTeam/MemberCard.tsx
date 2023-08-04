@@ -16,16 +16,18 @@ const MemberCard = ({ member, ...props }: Props) => {
                 src={
                     member.pfp.src && member.pfp.src.trim() !== ""
                         ? member.pfp.src
-                        : "/pfps/default.jpg"
+                        : "/pfps/default.png"
                 }
                 alt={member.pfp.description}
-                height={150}
-                width={150}
+                height={130}
+                width={130}
             />
             <h3 className={styles.name}>{member.name}</h3>
             <div className={styles.roles}>
                 {member.roles.map((role) => (
-                    <div className={styles.role}>{role}</div>
+                    <div className={styles.role} key={role}>
+                        {role}
+                    </div>
                 ))}
             </div>
         </div>

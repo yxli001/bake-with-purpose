@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { FC } from "react";
 import Image from "next/image";
@@ -24,7 +24,6 @@ interface NavbarProps {
 }
 
 const Navbar: FC<NavbarProps> = ({ logo, links }) => {
-    const router = useRouter();
     const { width, height } = useWindowDimensions();
     const [expanded, setExpanded] = useState<Boolean>(false);
 
