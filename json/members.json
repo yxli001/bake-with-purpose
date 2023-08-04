@@ -16,5 +16,41 @@
             "src": "",
             "description": "Sally Wang"
         }
+    },
+    {
+        "id": 3,
+        "name": "Libby McCutchan",
+        "roles": ["Secretary"],
+        "pfp": {
+            "src": "",
+            "description": "Libby McCutchan"
+        }
+    },
+    {
+        "id": 4,
+        "name": "Amanda Morley",
+        "roles": ["Journalist"],
+        "pfp": {
+            "src": "",
+            "description": "Amanda Morley"
+        }
+    },
+    {
+        "id": 5,
+        "name": "Zoie Carlile",
+        "roles": ["Journalist"],
+        "pfp": {
+            "src": "",
+            "description": "Zoie Carlile"
+        }
+    },
+    {
+        "id": 6,
+        "name": "Yixuan Li",
+        "roles": ["Webmaster"],
+        "pfp": {
+            "src": "",
+            "description": "Yixuan Li"
+        }
     }
 ]

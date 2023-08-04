@@ -10,9 +10,9 @@ export default function Home() {
         <main className={styles.main}>
             <Collage />
             <StatsBanner stats={{ cakes: 15, cookies: 80, cupcakes: 90 }} />
-            <MeetTheTeam id="team" />
-            <Qualifications id="apply" />
             <Events id="events" />
+            <Qualifications id="apply" />
+            <MeetTheTeam id="team" />
         </main>
     );
 }
