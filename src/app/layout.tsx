@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer/Footer";
 import "./globals.css";
 import Navbar from "@/components/Navbar/Navbar";
 import { Cormorant_Garamond } from "next/font/google";
@@ -44,6 +45,7 @@ export default function RootLayout({
                         links={links}
                     />
                     <div className="children">{children}</div>
+                    <Footer />
                 </div>
             </body>
         </html>

@@ -1,0 +1,44 @@
+.secondaryTitle {
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+}
+
+.links {
+    display: flex;
+    flex-direction: column;
+}
+
+.link {
+    color: rgba(255, 255, 255, 0.651);
+    text-decoration: none;
+}
+
+.link:hover {
+    color: white;
+}
+
+.expand {
+    display: none;
+}
+
+@media screen and (max-width: 700px) {
+    .links {
+        margin-left: 1rem;
+        align-items: flex-start;
+    }
+
+    .secondaryTitle {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .expand {
+        display: inline;
+    }
+
+    .secondaryTitle:hover {
+        opacity: 0.8;
+        cursor: pointer;
+    }
+}
