@@ -1,29 +1,16 @@
-"use client";
-
-import useWindowDimensions from "@/utils/dimensions";
 import styles from "./Collage.module.css";
 
-const Collage = () => {
-    const { width, height } = useWindowDimensions();
+import fs from "fs";
+import ImageCycler from "./ImageCycler";
 
-    let images = [1, 2, 3, 4, 5, 6, 7, 8, 9].map((i) => {
-        return (
-            <div
-                key={`Image ${i}`}
-                style={{
-                    backgroundImage: `url(/collage/${i}.jpeg)`,
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                    backgroundRepeat: "no-repeat",
-                }}
-                className={`${styles[`img${i}`]} ${styles.img}`}
-            ></div>
-        );
-    });
+const getImages = async () => {
+    const dir = fs.readdirSync("./public/collage");
 
-    if (width < 850) {
-        images = images.slice(0, 1);
-    }
+    return dir.map((file) => `/collage/${file}`);
+};
+
+const Collage = async () => {
+    const images = await getImages();
 
     return (
         <div className={styles.collage}>
@@ -44,7 +31,7 @@ const Collage = () => {
                     having fun and learning more about themselves and others.
                 </p>
             </div>
-            {images}
+            <ImageCycler images={images} className={styles.img} />
         </div>
     );
 };

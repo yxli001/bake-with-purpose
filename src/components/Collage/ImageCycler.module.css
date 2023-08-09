@@ -1,0 +1,15 @@
+.fadeOutIn {
+    animation: fadeOutIn ease 1s;
+}
+
+@keyframes fadeOutIn {
+    0% {
+        filter: brightness(0.5);
+    }
+    50% {
+        filter: brightness(0);
+    }
+    100% {
+        filter: brightness(0.5);
+    }
+}
