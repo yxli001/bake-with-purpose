@@ -15,7 +15,6 @@ const ImageCycler = ({ images, className }: Props) => {
     const [fade, setFade] = useState(false);
 
     useEffect(() => {
-        console.log("ha");
         const interval = setInterval(() => {
             setFade(true);
             setTimeout(() => {
