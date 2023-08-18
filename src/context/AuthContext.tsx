@@ -3,6 +3,10 @@
 import React from "react";
 import { onAuthStateChanged, getAuth } from "firebase/auth";
 import firebase_app from "@/firebase/config";
+import Spinner from "@/components/Spinner/Spinner";
+
+import "@/app/globals.css";
+import LoadingPage from "@/components/LoadingPage/LoadingPage";
 
 const auth = getAuth(firebase_app);
 
@@ -33,7 +37,7 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
 
     return (
         <AuthContext.Provider value={isAuthed}>
-            {loading ? <div>Loading...</div> : children}
+            {loading ? <LoadingPage /> : children}
         </AuthContext.Provider>
     );
 };

@@ -1,7 +1,8 @@
 import Footer from "@/components/Footer/Footer";
-import "./globals.css";
 import Navbar from "@/components/Navbar/Navbar";
 import { Cormorant_Garamond } from "next/font/google";
+
+import "../globals.css";
 
 const cormorant = Cormorant_Garamond({
     subsets: ["latin"],

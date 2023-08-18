@@ -1,11 +1,13 @@
 "use client";
 
 import { AuthContextProvider } from "@/context/AuthContext";
-import { Cormorant_Garamond } from "next/font/google";
+import { Open_Sans } from "next/font/google";
 
-const cormorant = Cormorant_Garamond({
+import "../globals.css";
+
+const openSans = Open_Sans({
     subsets: ["latin"],
-    weight: ["700"],
+    weight: ["700", "400", "300", "500", "600", "800"],
 });
 
 export default function RootLayout({
@@ -16,7 +18,7 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body
-                className={cormorant.className}
+                className={openSans.className}
                 suppressHydrationWarning={true}
             >
                 <AuthContextProvider>{children}</AuthContextProvider>

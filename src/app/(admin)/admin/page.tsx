@@ -8,8 +8,6 @@ import LoginForm from "@/components/LoginForm/LoginForm";
 export default function Admin() {
     const isAuthed = useAuthContext();
 
-    console.log(isAuthed);
-
     return (
         <div className={styles.admin}>
             {isAuthed ? <Dashboard /> : <LoginForm />}
