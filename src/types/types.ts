@@ -16,4 +16,5 @@ export interface Member {
 export interface Image {
     src: string;
     description: string;
+    fileName: string;
 }
