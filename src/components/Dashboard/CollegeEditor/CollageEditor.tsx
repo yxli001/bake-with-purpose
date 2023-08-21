@@ -170,6 +170,7 @@ const CollageEditor = () => {
                                         className={styles.image}
                                         src={image.compressedSrc}
                                         alt={image.description}
+                                        priority={true}
                                         fill
                                     />
                                 </div>
@@ -199,6 +200,7 @@ const CollageEditor = () => {
                                             width={400}
                                             height={250}
                                             className={styles.modalImage}
+                                            priority={true}
                                         />
                                         <div className={styles.modalImageText}>
                                             <FaEdit size={20} />
