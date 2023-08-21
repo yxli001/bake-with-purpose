@@ -36,6 +36,7 @@ const CollageEditor = () => {
     const [images, setImages] = useState<Image[]>([]);
     const [openModal, setOpenModal] = useState<boolean>(false);
     const [descriptionInput, setDescriptionInput] = useState<string>("");
+    const [warning, setWarning] = useState<string>("");
     const [openFileSelector, { filesContent }] = useFilePicker({
         readAs: "DataURL",
         accept: "image/*",
@@ -89,11 +90,17 @@ const CollageEditor = () => {
     const reset = () => {
         if (uploading) return;
         setDescriptionInput("");
+        setWarning("");
         setOpenModal(false);
     };
 
     const saveImage = async () => {
+        setWarning("");
         if (uploading) return;
+
+        if (descriptionInput.length === 0)
+            return setWarning("Please enter a description");
+
         setUploading(true);
         try {
             const lastDotIndex = filesContent[0].name.lastIndexOf(".");
@@ -221,6 +228,9 @@ const CollageEditor = () => {
                                         }
                                         maxLength={30}
                                     />
+                                    <div className={styles.warning}>
+                                        {warning}
+                                    </div>
                                     <div className={styles.modalButtons}>
                                         <button
                                             className={`${styles.button} ${styles.cancelButton}`}
