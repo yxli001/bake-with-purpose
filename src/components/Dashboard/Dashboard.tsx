@@ -8,6 +8,7 @@ import styles from "./Dashboard.module.css";
 import Link from "next/link";
 import CollageEditor from "./CollegeEditor/CollageEditor";
 import Image from "next/image";
+import StatsEditor from "./StatsEditor/StatsEditor";
 
 const Dashboard = () => {
     return (
@@ -30,6 +31,7 @@ const Dashboard = () => {
             </div>
             <div className={styles.main}>
                 <CollageEditor />
+                <StatsEditor />
             </div>
         </div>
     );

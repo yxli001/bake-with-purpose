@@ -19,3 +19,9 @@ export interface Image {
     description: string;
     fileName: string;
 }
+
+export interface Stat {
+    id: string;
+    item: string;
+    count: number;
+}

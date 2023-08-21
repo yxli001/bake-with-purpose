@@ -4,6 +4,7 @@ import { AuthContextProvider } from "@/context/AuthContext";
 import { Open_Sans } from "next/font/google";
 
 import "../globals.css";
+import "./layout.css";
 
 const openSans = Open_Sans({
     subsets: ["latin"],
@@ -18,7 +19,7 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body
-                className={openSans.className}
+                className={`${openSans.className} admin`}
                 suppressHydrationWarning={true}
             >
                 <AuthContextProvider>{children}</AuthContextProvider>

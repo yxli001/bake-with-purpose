@@ -7,17 +7,10 @@ import {
     collection,
     getDocs,
     query,
-    doc,
     addDoc,
     onSnapshot,
 } from "firebase/firestore";
-import {
-    getStorage,
-    ref,
-    uploadString,
-    getDownloadURL,
-    uploadBytes,
-} from "firebase/storage";
+import { getStorage, ref, getDownloadURL, uploadBytes } from "firebase/storage";
 import type { Image } from "@/types/types";
 import Compressor from "compressorjs";
 
@@ -27,11 +20,12 @@ import { FaPlus, FaEdit } from "react-icons/fa";
 import { useFilePicker } from "use-file-picker";
 import Spinner from "@/components/Spinner/Spinner";
 import { dataURLtoFile } from "@/utils/utils";
+import Modal from "@/components/Modal/Modal";
 
 const db = getFirestore(app);
 const storage = getStorage(app);
 const CollageEditor = () => {
-    const [loading, setLoading] = useState<boolean>(false);
+    const [loading, setLoading] = useState<boolean>(true);
     const [uploading, setUploading] = useState<boolean>(false);
     const [images, setImages] = useState<Image[]>([]);
     const [openModal, setOpenModal] = useState<boolean>(false);
@@ -167,6 +161,12 @@ const CollageEditor = () => {
             ) : (
                 <>
                     <div className={styles.pickers}>
+                        <div
+                            className={styles.imagePicker}
+                            onClick={openFileSelector}
+                        >
+                            <FaPlus size={25} />
+                        </div>
                         {images &&
                             images.map((image) => (
                                 <div
@@ -182,80 +182,65 @@ const CollageEditor = () => {
                                     />
                                 </div>
                             ))}
-                        <div
-                            className={styles.imagePicker}
-                            onClick={openFileSelector}
-                        >
-                            <FaPlus size={25} />
-                        </div>
                     </div>
-                    {openModal && filesContent[0] !== null && (
-                        <>
+                    <Modal
+                        onCloseModal={reset}
+                        showModal={openModal && filesContent[0] !== null}
+                        className={styles.modal}
+                    >
+                        {filesContent[0] && (
                             <div
-                                className={styles.backdrop}
-                                onClick={reset}
-                            ></div>
-                            <div className={styles.modal}>
-                                {filesContent[0] && (
-                                    <div
-                                        className={styles.modalImageContainer}
-                                        onClick={openFileSelector}
-                                    >
-                                        <ImageComponent
-                                            src={filesContent[0].content}
-                                            alt={filesContent[0].name}
-                                            width={400}
-                                            height={250}
-                                            className={styles.modalImage}
-                                            priority={true}
-                                        />
-                                        <div className={styles.modalImageText}>
-                                            <FaEdit size={20} />
-                                            <div className={styles.text}>
-                                                Change Selection
-                                            </div>
-                                        </div>
-                                    </div>
-                                )}
-                                <div className={styles.modalBody}>
-                                    <input
-                                        type="text"
-                                        className={styles.descriptionInput}
-                                        value={descriptionInput}
-                                        placeholder="Set a description"
-                                        onChange={(e) =>
-                                            setDescriptionInput(e.target.value)
-                                        }
-                                        maxLength={30}
-                                    />
-                                    <div className={styles.warning}>
-                                        {warning}
-                                    </div>
-                                    <div className={styles.modalButtons}>
-                                        <button
-                                            className={`${styles.button} ${styles.cancelButton}`}
-                                            onClick={reset}
-                                        >
-                                            Cancel
-                                        </button>
-                                        <button
-                                            className={`${styles.button} ${styles.saveButton}`}
-                                            onClick={saveImage}
-                                        >
-                                            {uploading ? (
-                                                <Spinner
-                                                    color="white"
-                                                    size={15}
-                                                />
-                                            ) : (
-                                                "Save"
-                                            )}
-                                        </button>
+                                className={styles.modalImageContainer}
+                                onClick={openFileSelector}
+                            >
+                                <ImageComponent
+                                    src={filesContent[0].content}
+                                    alt={filesContent[0].name}
+                                    width={400}
+                                    height={250}
+                                    className={styles.modalImage}
+                                    priority={true}
+                                />
+                                <div className={styles.modalImageText}>
+                                    <FaEdit size={20} />
+                                    <div className={styles.text}>
+                                        Change Selection
                                     </div>
                                 </div>
                             </div>
-                        </>
-                    )}
+                        )}
+                        <div className={styles.modalBody}>
+                            <input
+                                type="text"
+                                className={styles.descriptionInput}
+                                value={descriptionInput}
+                                placeholder="Set a description"
+                                onChange={(e) =>
+                                    setDescriptionInput(e.target.value)
+                                }
+                                maxLength={30}
+                            />
+                            <div className={styles.warning}>{warning}</div>
+                            <div className={styles.modalButtons}>
+                                <button
+                                    className={`${styles.button} ${styles.cancelButton}`}
+                                    onClick={reset}
+                                >
+                                    Cancel
+                                </button>
+                                <button
+                                    className={`${styles.button} ${styles.saveButton}`}
+                                    onClick={saveImage}
+                                >
+                                    {uploading ? (
+                                        <Spinner color="white" size={15} />
+                                    ) : (
+                                        "Save"
+                                    )}
+                                </button>
+                            </div>
+                        </div>
+                    </Modal>
                 </>
             )}
         </div>
