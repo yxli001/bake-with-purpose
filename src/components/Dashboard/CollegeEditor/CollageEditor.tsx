@@ -16,14 +16,17 @@ import {
     ref,
     uploadString,
     getDownloadURL,
+    uploadBytes,
 } from "firebase/storage";
 import type { Image } from "@/types/types";
+import Compressor from "compressorjs";
 
 import styles from "./CollageEditor.module.css";
 import ImageComponent from "next/image";
 import { FaPlus, FaEdit } from "react-icons/fa";
 import { useFilePicker } from "use-file-picker";
 import Spinner from "@/components/Spinner/Spinner";
+import { dataURLtoFile } from "@/utils/utils";
 
 const db = getFirestore(app);
 const storage = getStorage(app);
@@ -59,6 +62,7 @@ const CollageEditor = () => {
                         src: doc.data().src,
                         description: doc.data().description,
                         fileName: doc.data().fileName,
+                        compressedSrc: doc.data().compressedSrc,
                     } as Image;
                 })
             );
@@ -69,6 +73,8 @@ const CollageEditor = () => {
                     gotImages.push({
                         src: doc.data().src,
                         description: doc.data().description,
+                        fileName: doc.data().fileName,
+                        compressedSrc: doc.data().compressedSrc,
                     } as Image);
                 });
                 setImages(gotImages);
@@ -90,33 +96,60 @@ const CollageEditor = () => {
         if (uploading) return;
         setUploading(true);
         try {
-            console.log(filesContent[0]);
             const lastDotIndex = filesContent[0].name.lastIndexOf(".");
             const fileName =
                 filesContent[0].name.substring(0, lastDotIndex) +
                 "_" +
                 Date.now().toString();
-            const imageRef = ref(storage, `slider/${fileName}`);
-            const snapshot = await uploadString(
-                imageRef,
+            const file = dataURLtoFile(
                 filesContent[0].content,
-                "data_url"
+                fileName + "_full"
             );
 
-            const url = await getDownloadURL(snapshot.ref);
-            const sliderRef = collection(db, "slider");
+            new Compressor(file, {
+                quality: 0.8,
+                width: 400,
+                height: 400 * (9 / 16),
+                resize: "cover",
+                success: async (compressedFile) => {
+                    const compressedRef = ref(
+                        storage,
+                        `slider/${fileName}/${fileName}_compressed`
+                    );
+                    const compressedSnapshot = await uploadBytes(
+                        compressedRef,
+                        compressedFile
+                    );
 
-            await addDoc(sliderRef, {
-                src: url,
-                description: descriptionInput,
-                fileName: fileName,
+                    const fullRef = ref(
+                        storage,
+                        `slider/${fileName}/${fileName}_full`
+                    );
+                    const fullSnapshot = await uploadBytes(fullRef, file);
+
+                    const compressedUrl = await getDownloadURL(
+                        compressedSnapshot.ref
+                    );
+                    const fullUrl = await getDownloadURL(fullSnapshot.ref);
+
+                    const sliderRef = collection(db, "slider");
+
+                    await addDoc(sliderRef, {
+                        src: fullUrl,
+                        compressedSrc: compressedUrl,
+                        description: descriptionInput,
+                        fileName: fileName,
+                    });
+
+                    setUploading(false);
+                    reset();
+                },
             });
         } catch (e) {
+            setUploading(false);
+            reset();
             console.log(e);
         }
-        reset();
-        setUploading(false);
-        getImages();
     };
 
     return (
@@ -135,7 +168,7 @@ const CollageEditor = () => {
                                 >
                                     <ImageComponent
                                         className={styles.image}
-                                        src={image.src}
+                                        src={image.compressedSrc}
                                         alt={image.description}
                                         fill
                                     />

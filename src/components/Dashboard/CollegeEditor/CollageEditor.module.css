@@ -10,10 +10,14 @@
     gap: 1rem;
 }
 
+.imageContainer,
+.imagePicker {
+    width: 15rem;
+    height: 10rem;
+}
+
 .imageContainer {
     position: relative;
-    width: 12rem;
-    height: 8rem;
     border-radius: 8px;
 }
 
@@ -23,8 +27,6 @@
 }
 
 .imagePicker {
-    width: 12rem;
-    height: 8rem;
     border: 1px solid rgb(92, 92, 92);
     display: flex;
     justify-content: center;

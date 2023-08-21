@@ -7,11 +7,20 @@ import { AiFillDashboard } from "react-icons/ai";
 import styles from "./Dashboard.module.css";
 import Link from "next/link";
 import CollageEditor from "./CollegeEditor/CollageEditor";
+import Image from "next/image";
 
 const Dashboard = () => {
     return (
         <div className={styles.dashboard}>
             <div className={styles.sidebar}>
+                <Link className={styles.sidebarLink} href="/">
+                    <Image
+                        src="/logo_v2_dark_mode.png"
+                        width={50}
+                        height={50}
+                        alt="Bake with purpose logo"
+                    />
+                </Link>
                 <Link className={styles.sidebarLink} href="/admin">
                     <AiFillDashboard size={45} color="white" />
                 </Link>
