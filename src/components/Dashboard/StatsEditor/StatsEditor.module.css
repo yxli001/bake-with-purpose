@@ -3,3 +3,48 @@
     font-weight: 500;
     margin: 1rem 0;
 }
+
+.stats {
+    width: clamp(30rem, 50%, 50rem);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.stat {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid rgb(224, 224, 224);
+    border-radius: 8px;
+    padding: 1rem 1.8rem;
+}
+
+.statButtons {
+    display: flex;
+    gap: 1rem;
+}
+
+.button {
+    border: none;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+}
+
+.button:hover {
+    cursor: pointer;
+}
+
+.edit {
+    background-color: rgb(255, 255, 105);
+}
+
+.delete {
+    background-color: rgb(255, 105, 105);
+}
+
+.add {
+    width: fit-content;
+    background-color: rgb(105, 255, 105);
+    align-self: center;
+}

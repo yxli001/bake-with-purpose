@@ -49,12 +49,29 @@ const StatsEditor = () => {
             ) : (
                 <div className={styles.stats}>
                     {stats.map((stat) => (
-                        <div className={styles.stat}>
-                            <div>
-                                {stat.item}: {stat.count}
+                        <div className={styles.stat} key={stat.id}>
+                            <div className={styles.statContent}>
+                                {stat.item[0].toUpperCase() +
+                                    stat.item.substring(1, stat.item.length)}
+                                : {stat.count}
+                            </div>
+                            <div className={styles.statButtons}>
+                                <button
+                                    className={` ${styles.button} ${styles.edit}`}
+                                >
+                                    Edit
+                                </button>
+                                <button
+                                    className={` ${styles.button} ${styles.delete}`}
+                                >
+                                    Delete
+                                </button>
                             </div>
                         </div>
                     ))}
+                    <button className={`${styles.add} ${styles.button}`}>
+                        Add Stat
+                    </button>
                 </div>
             )}
         </div>
