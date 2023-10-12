@@ -17,6 +17,7 @@ import {
     onSnapshot,
     orderBy,
     query,
+    updateDoc,
 } from "firebase/firestore";
 import Modal from "@/components/Modal/Modal";
 
@@ -24,6 +25,7 @@ const db = getFirestore(app);
 const StatsEditor = () => {
     const [loading, setLoading] = useState(true);
     const [uploading, setUploading] = useState(false);
+    const [editStat, setEditStat] = useState<string | null>(null);
     const [stats, setStats] = useState<Stat[]>([]);
     const [showModal, setShowModal] = useState<boolean>(false);
     const [inputWarning, setInputWarning] = useState<string>("");
@@ -95,17 +97,26 @@ const StatsEditor = () => {
         }
 
         setUploading(true);
-        try {
-            const statsRef = collection(db, "stats");
-            await addDoc(statsRef, {
-                item: item.toLowerCase(),
-                count: count,
-            });
 
-            resetForm();
+        try {
+            if (editStat !== null) {
+                const statRef = doc(db, "stats", editStat);
+                await updateDoc(statRef, {
+                    item: item.toLowerCase(),
+                    count: count,
+                });
+            } else {
+                const statsRef = collection(db, "stats");
+                await addDoc(statsRef, {
+                    item: item.toLowerCase(),
+                    count: count,
+                });
+            }
         } catch (e) {
             console.log(e);
         }
+        setEditStat(null);
+        resetForm();
         setUploading(false);
     };
 
@@ -182,6 +193,12 @@ const StatsEditor = () => {
                             <div className={styles.statButtons}>
                                 <button
                                     className={` ${styles.button} ${styles.edit}`}
+                                    onClick={() => {
+                                        setEditStat(stat.id);
+                                        setCount(stat.count);
+                                        setItem(stat.item);
+                                        setShowModal(true);
+                                    }}
                                 >
                                     Edit
                                 </button>
