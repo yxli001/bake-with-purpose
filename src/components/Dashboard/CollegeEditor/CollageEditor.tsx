@@ -9,14 +9,22 @@ import {
     query,
     addDoc,
     onSnapshot,
+    doc,
+    deleteDoc,
 } from "firebase/firestore";
-import { getStorage, ref, getDownloadURL, uploadBytes } from "firebase/storage";
+import {
+    getStorage,
+    ref,
+    getDownloadURL,
+    uploadBytes,
+    deleteObject,
+} from "firebase/storage";
 import type { Image } from "@/types/types";
 import Compressor from "compressorjs";
 
 import styles from "./CollageEditor.module.css";
 import ImageComponent from "next/image";
-import { FaPlus, FaEdit } from "react-icons/fa";
+import { FaPlus, FaEdit, FaTrash } from "react-icons/fa";
 import { useFilePicker } from "use-file-picker";
 import Spinner from "@/components/Spinner/Spinner";
 import { dataURLtoFile } from "@/utils/utils";
@@ -66,6 +74,7 @@ const CollageEditor = () => {
                 const gotImages: Image[] = [];
                 querySnapshot.forEach((doc) => {
                     gotImages.push({
+                        id: doc.id,
                         src: doc.data().src,
                         description: doc.data().description,
                         fileName: doc.data().fileName,
@@ -115,17 +124,14 @@ const CollageEditor = () => {
                 success: async (compressedFile) => {
                     const compressedRef = ref(
                         storage,
-                        `slider/${fileName}/${fileName}_compressed`
+                        `slider/${fileName}_compressed`
                     );
                     const compressedSnapshot = await uploadBytes(
                         compressedRef,
                         compressedFile
                     );
 
-                    const fullRef = ref(
-                        storage,
-                        `slider/${fileName}/${fileName}_full`
-                    );
+                    const fullRef = ref(storage, `slider/${fileName}_full`);
                     const fullSnapshot = await uploadBytes(fullRef, file);
 
                     const compressedUrl = await getDownloadURL(
@@ -149,6 +155,26 @@ const CollageEditor = () => {
         } catch (e) {
             setUploading(false);
             reset();
+            console.log(e);
+        }
+    };
+
+    const deleteImage = async (image: Image) => {
+        if (uploading) return;
+        if (!window.confirm("Delete this image?")) return;
+        setImages(images.filter((img) => img.id !== image.id));
+
+        try {
+            const imageRef = doc(db, "slider", image.id);
+            const compressedRef = ref(
+                storage,
+                `slider/${image.fileName}_compressed`
+            );
+            const fullRef = ref(storage, `slider/${image.fileName}_full`);
+            await deleteDoc(imageRef);
+            await deleteObject(compressedRef);
+            await deleteObject(fullRef);
+        } catch (e) {
             console.log(e);
         }
     };
@@ -179,6 +205,13 @@ const CollageEditor = () => {
                                         alt={image.description}
                                         priority={true}
                                         fill
+                                    />
+                                    <FaTrash
+                                        className={styles.deleteButton}
+                                        onClick={() => {
+                                            deleteImage(image);
+                                        }}
+                                        size={30}
                                     />
                                 </div>
                             ))}

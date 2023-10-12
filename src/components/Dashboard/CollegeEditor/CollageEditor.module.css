@@ -12,6 +12,7 @@
 
 .imageContainer,
 .imagePicker {
+    display: relative;
     width: 15rem;
     height: 10rem;
 }
@@ -21,9 +22,31 @@
     border-radius: 8px;
 }
 
+.imageContainer:hover .image {
+    filter: brightness(0.5);
+}
+
+.imageContainer:hover .deleteButton {
+    display: block;
+    color: white;
+}
+
 .image {
     border-radius: 8px;
     object-fit: cover;
+}
+
+.deleteButton {
+    position: absolute;
+    z-index: 100;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+
+.deleteButton:hover {
+    cursor: pointer;
 }
 
 .imagePicker {

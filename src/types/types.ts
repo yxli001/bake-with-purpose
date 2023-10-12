@@ -14,6 +14,7 @@ export interface Member {
 }
 
 export interface Image {
+    id: string;
     src: string;
     compressedSrc: string;
     description: string;
