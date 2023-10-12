@@ -1,0 +1,130 @@
+.title {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.pickers {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.imageContainer,
+.imagePicker {
+    width: 15rem;
+    height: 10rem;
+}
+
+.imageContainer {
+    position: relative;
+    border-radius: 8px;
+}
+
+.image {
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.imagePicker {
+    border: 1px solid rgb(92, 92, 92);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+}
+
+.imagePicker:hover {
+    cursor: pointer;
+    background-color: rgb(242, 242, 242);
+}
+
+.modal {
+    padding: 0 0 2rem 0;
+}
+
+.modalImageContainer {
+    position: relative;
+}
+
+.modalImageContainer:hover {
+    cursor: pointer;
+}
+
+.modalImageContainer:hover .modalImage {
+    filter: brightness(0.6);
+}
+
+.modalImage {
+    object-fit: cover;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.modalImageText {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.modalBody {
+    width: 100%;
+    padding: 1rem 1rem 0 1rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.descriptionInput {
+    width: 100%;
+    padding: 0.5rem 0.4rem;
+    letter-spacing: 0.5px;
+    font-size: 1rem;
+}
+
+.modalButtons {
+    align-self: flex-end;
+    display: flex;
+    gap: 1rem;
+}
+
+.button {
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.cancelButton {
+    border: none;
+}
+
+.cancelButton:hover {
+    background-color: rgba(0, 0, 0, 0.113);
+}
+
+.saveButton {
+    background-color: #ff96d6;
+    color: white;
+    border: none;
+}
+
+.saveButton:hover {
+    background-color: #ff69c6;
+}
+
+.button:hover {
+    cursor: pointer;
+}
+
+.warning {
+    color: red;
+}

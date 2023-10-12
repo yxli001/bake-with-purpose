@@ -9,7 +9,7 @@ export default function Home() {
     return (
         <main className={styles.main}>
             <Collage />
-            <StatsBanner stats={{ cakes: 15, cookies: 80, cupcakes: 90 }} />
+            <StatsBanner stats={{ cakes: 21, cookies: 80, cupcakes: 116 }} />
             <Events id="events" />
             <Qualifications id="apply" />
             <MeetTheTeam id="team" />

@@ -1,12 +1,23 @@
 import styles from "./Collage.module.css";
 
-import fs from "fs";
 import ImageCycler from "./ImageCycler";
+import { collection, getDocs, getFirestore } from "firebase/firestore";
+import app from "@/firebase/config";
 
+const db = getFirestore(app);
 const getImages = async () => {
-    const dir = fs.readdirSync("./public/collage");
+    // const dir = fs.readdirSync("./public/collage");
+    // return dir.map((file) => `/collage/${file}`);
+    try {
+        const sliderRef = collection(db, "slider");
+        const sliderSnapshot = await getDocs(sliderRef);
 
-    return dir.map((file) => `/collage/${file}`);
+        return sliderSnapshot.docs.map((doc) => doc.data().src);
+    } catch (error) {
+        console.log(error);
+    }
+
+    return [];
 };
 
 const Collage = async () => {
