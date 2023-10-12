@@ -17,4 +17,4 @@ export default function Home() {
     );
 }
 
-export const revalidate = 10;
+export const revalidate = 600;
