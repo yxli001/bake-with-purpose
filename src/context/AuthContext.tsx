@@ -3,7 +3,6 @@
 import React from "react";
 import { onAuthStateChanged, getAuth } from "firebase/auth";
 import firebase_app from "@/firebase/config";
-import Spinner from "@/components/Spinner/Spinner";
 
 import "@/app/globals.css";
 import LoadingPage from "@/components/LoadingPage/LoadingPage";

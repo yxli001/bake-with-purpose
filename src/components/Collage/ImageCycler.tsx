@@ -17,15 +17,19 @@ const ImageCycler = ({ images, className }: Props) => {
     useEffect(() => {
         const interval = setInterval(() => {
             setFade(true);
-            setTimeout(() => {
-                setImage((image) => (image + 1) % (images.length - 1));
-
-                setTimeout(() => setFade(false), 1100);
-            }, 250);
         }, 3000);
 
         return () => clearInterval(interval);
-    }, []);
+    }, [images]);
+
+    useEffect(() => {
+        if (!fade) return;
+
+        setTimeout(() => {
+            setImage((image) => (image + 1) % (images.length - 1));
+            setTimeout(() => setFade(false), 1100);
+        }, 400);
+    }, [fade]);
 
     return (
         <Image

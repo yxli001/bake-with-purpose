@@ -6,8 +6,6 @@ import app from "@/firebase/config";
 
 const db = getFirestore(app);
 const getImages = async () => {
-    // const dir = fs.readdirSync("./public/collage");
-    // return dir.map((file) => `/collage/${file}`);
     try {
         const sliderRef = collection(db, "slider");
         const sliderSnapshot = await getDocs(sliderRef);
