@@ -1,0 +1,32 @@
+.dashboard {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+}
+
+.sidebar {
+    background-color: #ff96d6;
+    width: 80px;
+    flex-shrink: 0;
+}
+
+.sidebarLink {
+    position: relative;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.8rem;
+}
+
+.sidebarLink:hover {
+    cursor: pointer;
+    background-color: #ff81cf;
+}
+
+.main {
+    overflow-y: scroll;
+    padding: 2rem 3rem;
+    flex: 1;
+}

@@ -14,6 +14,15 @@ export interface Member {
 }
 
 export interface Image {
+    id: string;
     src: string;
+    compressedSrc: string;
     description: string;
+    fileName: string;
+}
+
+export interface Stat {
+    id: string;
+    item: string;
+    count: number;
 }

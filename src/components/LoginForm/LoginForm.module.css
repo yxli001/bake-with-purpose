@@ -1,0 +1,72 @@
+.formPage {
+    width: 100%;
+    padding: 5rem;
+}
+
+.form {
+    width: clamp(400px, 40%, 450px);
+    border-radius: 8px;
+    box-shadow: 3px 8px 15px rgba(0, 0, 0, 0.3);
+
+    display: flex;
+    margin: 0 auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    gap: 1rem;
+}
+
+.formHeader {
+    background-color: #ff96d6;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.formBody {
+    background-color: white;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    padding: 1rem 3rem 3rem 3rem;
+}
+
+.title {
+    font-size: 2rem;
+    font-weight: 400;
+    text-align: center;
+    color: white;
+}
+
+.input {
+    padding: 1rem 0.6rem;
+    border: none;
+    background-color: rgba(170, 170, 170, 0.1);
+    letter-spacing: 0.5px;
+}
+
+.input::placeholder {
+    color: rgba(85, 85, 85, 0.5);
+}
+
+.login {
+    margin-top: 1rem;
+    padding: 0.8rem;
+    text-transform: uppercase;
+    border-radius: 20px;
+
+    border: none;
+    background-color: #ff96d6;
+    color: white;
+    font-size: 1rem;
+}
+
+.message {
+    margin: 0rem 0rem 1rem 0rem;
+    text-align: center;
+    color: red;
+}

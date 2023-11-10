@@ -1,0 +1,93 @@
+.title {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin: 1rem 0;
+}
+
+.stats {
+    width: clamp(30rem, 50%, 50rem);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.stat {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid rgb(224, 224, 224);
+    border-radius: 8px;
+    padding: 1rem 1.8rem;
+}
+
+.statButtons {
+    display: flex;
+    gap: 1rem;
+}
+
+.button {
+    border: none;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+}
+
+.button:hover {
+    cursor: pointer;
+}
+
+.edit {
+    background-color: rgb(255, 255, 35);
+}
+
+.delete {
+    background-color: rgb(255, 60, 60);
+}
+
+.add {
+    width: fit-content;
+    background-color: rgb(33, 223, 39);
+    align-self: center;
+}
+
+.modal {
+    width: 300px;
+    padding: 1rem 2rem 2rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.modalTitle {
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.modalContent {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.input {
+    width: 100%;
+    padding: 0.5rem 0.4rem;
+    letter-spacing: 0.5px;
+    font-size: 1rem;
+}
+
+.buttonContainer {
+    margin-top: 1rem;
+    align-self: flex-end;
+    display: flex;
+    gap: 1rem;
+}
+
+.inputWarning {
+    color: red;
+    text-align: center;
+}
+
+.save {
+    background-color: #ff69c6;
+    color: white;
+}

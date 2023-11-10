@@ -1,6 +1,18 @@
 import { FC } from "react";
 
+import {
+    collection,
+    getDocs,
+    getFirestore,
+    orderBy,
+    query,
+} from "firebase/firestore";
+import app from "@/firebase/config";
+import { Stat } from "@/types/types";
+
 import styles from "./StatsBanner.module.css";
+
+const db = getFirestore(app);
 
 interface StatsBannerProps {
     stats: {
@@ -10,22 +22,36 @@ interface StatsBannerProps {
     };
 }
 
-const StatsBanner: FC<StatsBannerProps> = ({ stats }) => {
+const getStats = async () => {
+    try {
+        const statsRef = collection(db, "stats");
+        const q = query(statsRef, orderBy("item"));
+        const statsSnapshot = await getDocs(q);
+
+        return statsSnapshot.docs.map((doc) => {
+            return { id: doc.id, ...doc.data() } as Stat;
+        });
+    } catch (error) {}
+};
+
+const StatsBanner: FC<StatsBannerProps> = async () => {
+    const stats = await getStats();
+
     return (
         <div className={styles.banner}>
             <div className={styles.title}>{"We've baked"}</div>
             <div className={styles.stats}>
-                <div className={styles.stat}>
-                    {stats.cakes} <div className={styles.statWord}>Cakes</div>
-                </div>
-                <div className={styles.stat}>
-                    {stats.cookies}
-                    <div className={styles.statWord}>Cookies</div>
-                </div>
-                <div className={styles.stat}>
-                    {stats.cupcakes}
-                    <div className={styles.statWord}>Cupcakes</div>
-                </div>
+                {stats?.map((stat) => {
+                    return (
+                        <div className={styles.stat} key={stat.item}>
+                            {stat.count}
+                            <div className={styles.statWord}>
+                                {stat.item.charAt(0).toUpperCase() +
+                                    stat.item.slice(1)}
+                            </div>
+                        </div>
+                    );
+                })}
             </div>
         </div>
     );

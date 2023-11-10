@@ -1,7 +1,8 @@
 import Footer from "@/components/Footer/Footer";
-import "./globals.css";
 import Navbar from "@/components/Navbar/Navbar";
 import { Cormorant_Garamond } from "next/font/google";
+
+import "../globals.css";
 
 const cormorant = Cormorant_Garamond({
     subsets: ["latin"],
@@ -38,7 +39,7 @@ export default function RootLayout({
                 <div className="container">
                     <Navbar
                         logo={{
-                            imgSrc: "/logo_v2.png",
+                            imgSrc: "/logo_v2_light_mode.png",
                             title: "Bake With Purpose",
                             textSrc: "/logo-text.jpeg",
                         }}

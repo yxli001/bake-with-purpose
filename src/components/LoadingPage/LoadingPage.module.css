@@ -1,0 +1,13 @@
+.page {
+    width: 100vw;
+    height: 100vh;
+    z-index: 100;
+    background-color: white;
+}
+
+.loading {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+}
