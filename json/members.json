@@ -4,7 +4,7 @@
         "name": "Olivia Xiao",
         "roles": ["President", "Co-Founder"],
         "pfp": {
-            "src": "",
+            "src": "/pfps/olivia-xiao.png",
             "description": "Olivia Xiao"
         }
     }, 
@@ -13,7 +13,7 @@
         "name": "Sally Wang",
         "roles": ["Vice President", "Co-Founder"],
         "pfp": {
-            "src": "",
+            "src": "/pfps/sally-wang.jpg",
             "description": "Sally Wang"
         }
     },
@@ -22,7 +22,7 @@
         "name": "Libby McCutchan",
         "roles": ["Secretary"],
         "pfp": {
-            "src": "",
+            "src": "/pfps/libby-mccutchan.jpeg",
             "description": "Libby McCutchan"
         }
     },
@@ -31,7 +31,7 @@
         "name": "Amanda Morley",
         "roles": ["Journalist"],
         "pfp": {
-            "src": "",
+            "src": "/pfps/amanda-morley.jpg",
             "description": "Amanda Morley"
         }
     },
@@ -40,7 +40,7 @@
         "name": "Zoie Carlile",
         "roles": ["Journalist"],
         "pfp": {
-            "src": "",
+            "src": "/pfps/zoie-carlile.jpg",
             "description": "Zoie Carlile"
         }
     },
@@ -49,7 +49,7 @@
         "name": "Yixuan Li",
         "roles": ["Webmaster"],
         "pfp": {
-            "src": "",
+            "src": "/pfps/yixuan-li.jpg",
             "description": "Yixuan Li"
         }
     }

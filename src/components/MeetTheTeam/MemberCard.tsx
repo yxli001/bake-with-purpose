@@ -18,6 +18,10 @@ const MemberCard = ({ member, ...props }: Props) => {
                         ? member.pfp.src
                         : "/pfps/default.png"
                 }
+                onError={(e) => {
+                    e.currentTarget.srcset = "/pfps/default.png";
+                    e.currentTarget.onerror = null;
+                }}
                 alt={member.pfp.description}
                 height={130}
                 width={130}
