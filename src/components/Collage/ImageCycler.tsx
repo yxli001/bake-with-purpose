@@ -15,6 +15,7 @@ const ImageCycler = ({ images, className }: Props) => {
     const [fade, setFade] = useState(false);
 
     useEffect(() => {
+        console.log(images);
         const interval = setInterval(() => {
             setFade(true);
         }, 3000);
@@ -26,7 +27,7 @@ const ImageCycler = ({ images, className }: Props) => {
         if (!fade) return;
 
         setTimeout(() => {
-            setImage((image) => (image + 1) % (images.length - 1));
+            setImage((image) => (image + 1) % images.length);
             setTimeout(() => setFade(false), 1100);
         }, 400);
     }, [fade]);
