@@ -26,7 +26,7 @@ const ImageCycler = ({ images, className }: Props) => {
         if (!fade) return;
 
         setTimeout(() => {
-            setImage((image) => (image + 1) % (images.length - 1));
+            setImage((image) => (image + 1) % images.length);
             setTimeout(() => setFade(false), 1100);
         }, 400);
     }, [fade]);
