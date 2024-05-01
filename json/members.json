@@ -1,22 +1,22 @@
 [
     {
         "id": 1,
-        "name": "Olivia Xiao",
-        "roles": ["President", "Co-Founder"],
-        "pfp": {
-            "src": "/pfps/olivia-xiao.png",
-            "description": "Olivia Xiao"
-        }
-    }, 
-    {
-        "id": 2,
         "name": "Sally Wang",
-        "roles": ["Vice President", "Co-Founder"],
+        "roles": ["President", "Co-Founder"],
         "pfp": {
             "src": "/pfps/sally-wang.jpg",
             "description": "Sally Wang"
         }
     },
+    {
+        "id": 2,
+        "name": "Olivia Xiao",
+        "roles": ["Co-Founder"],
+        "pfp": {
+            "src": "/pfps/olivia-xiao.png",
+            "description": "Olivia Xiao"
+        }
+    }, 
     {
         "id": 3,
         "name": "Libby McCutchan",
